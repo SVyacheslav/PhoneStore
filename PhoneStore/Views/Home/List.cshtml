@@ -1,0 +1,19 @@
+﻿@using PhoneStore.Models
+@using PhoneStore.HtmlHelpers
+@model PhonesListViewModel
+
+
+
+@{
+    ViewBag.Title = "Товары";
+}
+
+@foreach (var ph in @Model.Phones)
+{
+    @Html.Partial("PhoneSummary", ph)
+}
+
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
+        new { page = x, manufacturer = Model.CurrentManufacturer }))
+</div>

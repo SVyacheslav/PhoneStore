@@ -1,0 +1,17 @@
+﻿@model PhoneStore.Domain.Entities.Cart
+
+
+
+<div class="navbar-right ">
+    <a href=@Url.Action("Index", "Cart", new { returnUrl = Request.Url.PathAndQuery })
+       class="btn btn-default navbar-btn">       
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+    </a>
+</div>
+
+<div class="navbar-text navbar-right">
+    <b>Ваша корзина:</b>
+    @Model.Lines.Sum(x => x.Quantity) товар(-а, -ов),
+    @Model.ComputeTotalValue().ToString("# тенге")
+    @Html.Label(" ")
+</div>
